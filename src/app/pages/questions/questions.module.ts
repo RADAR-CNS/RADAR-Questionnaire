@@ -13,6 +13,8 @@ import { AudioRecordService } from './services/audio-record.service'
 import { FinishTaskService } from './services/finish-task.service'
 import { QuestionsService } from './services/questions.service'
 import { TimestampService } from './services/timestamp.service'
+import {FinishAndLaunchComponent} from "./components/finish-and-launch/finish-and-launch.component";
+import {AppLauncherService} from "./services/app-launcher.service";
 
 @NgModule({
   imports: [
@@ -25,6 +27,7 @@ import { TimestampService } from './services/timestamp.service'
     IntroductionComponent,
     QuestionsPageComponent,
     FinishComponent,
+    FinishAndLaunchComponent,
     ToolbarComponent
   ],
   providers: [
@@ -32,7 +35,8 @@ import { TimestampService } from './services/timestamp.service'
     AudioRecordService,
     TimestampService,
     QuestionsService,
-    FinishTaskService
+    FinishTaskService,
+    AppLauncherService,
   ]
 })
 export class QuestionsModule {}

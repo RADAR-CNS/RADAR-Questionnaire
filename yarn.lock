@@ -569,6 +569,13 @@
   dependencies:
     "@types/cordova" latest
 
+"@ionic-native/app-launcher@^5.31.1":
+  version "5.31.1"
+  resolved "https://registry.yarnpkg.com/@ionic-native/app-launcher/-/app-launcher-5.31.1.tgz#c652fb76a7a8d21b5ac0149143a969cf39997b45"
+  integrity sha512-kHfsnbelbAFD9NKyw/T+3WzfbwV1MBMn/PAExwdGYfLMaR3YeB3mGzDY+qIbzHmmiUOE3X+0egGmp90MWe3/lw==
+  dependencies:
+    "@types/cordova" latest
+
 "@ionic-native/app-version@^5.28.0":
   version "5.28.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/app-version/-/app-version-5.28.0.tgz#ee35f55fb6d634e7d81b2062e5df5ac3012ee8b7"

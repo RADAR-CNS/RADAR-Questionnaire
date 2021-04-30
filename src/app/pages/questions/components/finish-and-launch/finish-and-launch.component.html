@@ -1,0 +1,40 @@
+<img src="assets/imgs/checkmark-big.svg" class="icon" alt="Completed" />
+<h2 text-center>{{ content }}<br>{{getExternalAppLaunchDescription()}}</h2>
+<div class="pos-bottom">
+  <div class="pos-bottom-90">
+    <div *ngIf="displayNextTaskReminder" class="next-task-highlight">
+      {{ 'FINISH_NEXT_TASK_REMINDER' | translate }}
+    </div>
+    <ion-item no-lines *ngIf="requiresInClinicCompletion">
+      <ion-label>
+        {{ 'FINISH_COMPLETED_IN_CLINIC' | translate }}
+      </ion-label>
+      <ion-toggle item-right [(ngModel)]="completedInClinic"></ion-toggle>
+    </ion-item>
+  </div>
+  <div class="done-button">
+    <button
+      ion-button
+      class="bt bt--full"
+      round
+      full
+      *ngIf="showDoneButton"
+      (tap)="handleClosePage()"
+    >
+      {{canLaunch? ('EXTERNAL_APP_LAUNCH_BUTTON' | translate) : ('BTN_DONE' | translate)}}
+    </button>
+    <ng-container *ngIf="!showDoneButton && isShown">
+      <div class="extra-info">
+        <img
+          class="extra-info-icon"
+          src="assets/imgs/warning.png"
+          alt="Warning"
+        />
+        {{ 'WARNING_DO_NOT_CLOSE_APP' | translate }}
+      </div>
+      <div>
+        <ion-spinner name="dots"></ion-spinner>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -33,6 +33,7 @@ import { PagesModule } from './pages/pages.module'
 import { AndroidPermissionUtility } from './shared/utilities/android-permission'
 import { jwtOptionsFactory } from './shared/utilities/jwtOptionsFactory'
 import { Utility } from './shared/utilities/util'
+import {AppLauncher} from "@ionic-native/app-launcher/ngx";
 
 @NgModule({
   imports: [
@@ -82,6 +83,7 @@ import { Utility } from './shared/utilities/util'
     FirebaseX,
     LocalNotifications,
     LogService,
+    AppLauncher,
     { provide: RemoteConfigService, useClass: FirebaseRemoteConfigService },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

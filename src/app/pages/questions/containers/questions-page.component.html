@@ -25,6 +25,7 @@
                 "
                 [question]="question"
                 [questionIndex]="i"
+                [task]="task"
                 [currentIndex]="currentQuestionGroupId"
                 [isSectionHeaderHidden]="j != currentQuestionIndices[0]"
                 (answer)="onAnswer($event)"
@@ -34,7 +35,7 @@
         </ng-container>
         <ion-slide>
           <finish
-            *ngIf="showFinishScreen"
+            *ngIf="showFinishScreen && !showFinishAndLaunchScreen"
             [content]="endText"
             [isLastTask]="isLastTask"
             [requiresInClinicCompletion]="requiresInClinicCompletion"
@@ -43,6 +44,18 @@
             [isShown]="showFinishScreen"
             (exit)="handleFinish($event)"
           ></finish>
+          <finish-and-launch
+            *ngIf="showFinishScreen && showFinishAndLaunchScreen"
+            [externalApp]="externalApp"
+            [task]="task"
+            [content]="endText"
+            [isLastTask]="isLastTask"
+            [requiresInClinicCompletion]="requiresInClinicCompletion"
+            [taskType]="taskType"
+            [showDoneButton]="showDoneButton"
+            [isShown]="showFinishScreen"
+            (exit)="handleFinish($event)"
+          ></finish-and-launch>
         </ion-slide>
       </ion-slides>
     </div>

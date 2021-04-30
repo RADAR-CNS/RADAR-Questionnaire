@@ -1485,5 +1485,55 @@ export const Localisations = {
     nl: 'Tekst invoeren',
     pl: 'Wprowadź tekst',
     hb: 'הזן טקסט'
+  },
+  EXTERNAL_APP_LAUNCH_DESC: {
+    da: '',
+    de: '',
+    en: 'Finish the questionnaire and launch',
+    es: '',
+    it: '',
+    nl: '',
+    pl: '',
+    hb: ''
+  },
+  EXTERNAL_APP_LAUNCH_BUTTON: {
+    da: '',
+    de: '',
+    en: 'Finish and Launch App',
+    es: '',
+    it: '',
+    nl: '',
+    pl: '',
+    hb: ''
+  },
+  EXTERNAL_APP_FAILURE_ON_VALIDATING: {
+    da: '',
+    de: '',
+    en: 'is not install on your device or does not support deep linking',
+    es: '',
+    it: '',
+    nl: '',
+    pl: '',
+    hb: ''
+  },
+  EXTERNAL_APP_FAILURE_ON_LAUNCH_TITLE: {
+    da: '',
+    de: '',
+    en: 'Error on Launching',
+    es: '',
+    it: '',
+    nl: '',
+    pl: '',
+    hb: ''
+  },
+  EXTERNAL_APP_FAILURE_ON_LAUNCH_DESC: {
+    da: '',
+    de: '',
+    en: 'cannot be launched',
+    es: '',
+    it: '',
+    nl: '',
+    pl: '',
+    hb: ''
   }
 }

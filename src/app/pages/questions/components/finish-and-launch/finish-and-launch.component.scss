@@ -1,0 +1,54 @@
+finish-and-launch {
+  ion-item.item {
+    margin-bottom: $item-separation-distance;
+    background-color: $cl-primary-40;
+  }
+
+  ion-item.item:last-child {
+    margin-bottom: 0;
+  }
+
+  .pos-bottom-90 {
+    padding-bottom: 32px;
+  }
+
+  .icon {
+    width: 30%;
+  }
+
+  .done-button {
+    padding: 0 24px;
+  }
+
+  .next-task-highlight {
+    padding: 4px;
+    background-color: $cl-warning-20;
+    font-size: 16px;
+  }
+
+  ion-spinner * {
+    padding-left: 10px;
+    width: 10px;
+    height: 30px;
+    background-color: #fff;
+    fill: #fff;
+    stroke: #fff;
+  }
+
+  .extra-info {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2vh;
+  }
+
+  .extra-info-icon {
+    height: 1.5vh;
+  }
+
+  .pos-bottom {
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    width: 100%;
+  }
+}

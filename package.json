@@ -50,6 +50,7 @@
     "@angular/router": "^7.2.13",
     "@auth0/angular-jwt": "^4.2.0",
     "@ionic-native/android-permissions": "^5.26.0",
+    "@ionic-native/app-launcher": "^5.31.1",
     "@ionic-native/app-version": "^5.28.0",
     "@ionic-native/background-mode": "^5.32.0",
     "@ionic-native/barcode-scanner": "^5.27.0",
@@ -247,6 +248,7 @@
         "ANDROID_GSON_VERSION": "2.8.6",
         "ANDROID_FIREBASE_PERF_GRADLE_PLUGIN_VERSION": "1.3.1"
       },
+      "cordova-plugin-app-launcher": {},
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       }

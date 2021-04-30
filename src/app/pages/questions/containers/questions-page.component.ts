@@ -11,10 +11,11 @@ import {
   AssessmentType,
   ShowIntroductionType
 } from '../../../shared/models/assessment'
-import { Question } from '../../../shared/models/question'
+import {ExternalApp, Question} from '../../../shared/models/question'
 import { Task } from '../../../shared/models/task'
 import { HomePageComponent } from '../../home/containers/home-page.component'
 import { QuestionsService } from '../services/questions.service'
+import {AppLauncherService} from "../services/app-launcher.service";
 
 @Component({
   selector: 'page-questions',
@@ -33,6 +34,7 @@ export class QuestionsPageComponent implements OnInit {
   task: Task
   taskType: AssessmentType
   questions: Question[]
+  externalApp: ExternalApp
   // Questions grouped by matrix group if it exists
   groupedQuestions: Map<string, Question[]>
   // Indices of questions (of the group) currently shown
@@ -46,6 +48,8 @@ export class QuestionsPageComponent implements OnInit {
   showIntroductionScreen: boolean
   showDoneButton: boolean
   showFinishScreen: boolean
+  showFinishAndLaunchScreen: boolean = false
+  externalAppCanLaunch: boolean = false
   SHOW_INTRODUCTION_SET: Set<boolean | ShowIntroductionType> = new Set([
     true,
     ShowIntroductionType.ALWAYS,
@@ -60,7 +64,8 @@ export class QuestionsPageComponent implements OnInit {
     private usage: UsageService,
     private platform: Platform,
     private insomnia: Insomnia,
-    private localization: LocalizationService
+    private localization: LocalizationService,
+    private appLauncher: AppLauncherService,
   ) {
     this.platform.registerBackButtonAction(() => {
       this.sendCompletionLog()
@@ -98,12 +103,17 @@ export class QuestionsPageComponent implements OnInit {
     this.showIntroductionScreen = this.SHOW_INTRODUCTION_SET.has(
       res.assessment.showIntroduction
     )
-    this.questions = res.questions
+
+    this.questions = this.appLauncher.removeLaunchAppFromQuestions(res.questions)
+    this.externalApp = this.appLauncher.getLaunchApp(res.questions)
     this.groupedQuestions = this.groupQuestionsByMatrixGroup(this.questions)
     this.endText =
       res.endText && res.endText.length
         ? res.endText
         : this.localization.translateKey(LocKeys.FINISH_THANKS)
+
+    this.checkIfQuestionnaireHasAppLaunch()
+
     this.isLastTask = res.isLastTask
     this.assessment = res.assessment
     this.taskType = res.type
@@ -145,6 +155,9 @@ export class QuestionsPageComponent implements OnInit {
       .handleClinicalFollowUp(this.assessment, completedInClinic)
       .then(() => {
         this.updateDoneButton(false)
+        if(this.externalAppCanLaunch) {
+          this.appLauncher.launchApp(this.externalApp, this.task)
+        }
         return this.navCtrl.setRoot(HomePageComponent)
       })
   }
@@ -265,4 +278,19 @@ export class QuestionsPageComponent implements OnInit {
     // NOTE: This is needed to display questions (in the view) from the map in order
     return 1
   }
+
+  private checkIfQuestionnaireHasAppLaunch() {
+    if(this.externalApp && this.appLauncher.isExternalAppUriValidForThePlatform(this.externalApp)){
+      this.appLauncher.isExternalAppCanLaunch(this.externalApp, this.task)
+        .then(canLaunch => {
+          this.showFinishAndLaunchScreen = true
+          this.externalAppCanLaunch = canLaunch
+        })
+        .catch(err => {
+          this.showFinishAndLaunchScreen = false
+        })
+    }
+  }
 }
+
+

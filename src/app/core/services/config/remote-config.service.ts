@@ -130,7 +130,12 @@ export class FirebaseRemoteConfigService extends RemoteConfigService {
     return this.fetch(this.timeoutMillis)
   }
 
-  private fetch(timeoutMillis: number) {
+  sleep(milliseconds: number) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+  }
+
+  private async fetch(timeoutMillis: number) {
+    await this.sleep(200)
     if (!this.platform.is('cordova')) {
       console.log('Not fetching Firebase Remote Config without cordova')
       return Promise.resolve(this.configSubject.value)
