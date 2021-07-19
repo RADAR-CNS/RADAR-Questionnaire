@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="559" id="org.phidatalab.radar_armt" ios-CFBundleIdentifier="org.phidatalab.radar-armt" ios-CFBundleVersion="1" version="2.0.1-alpha" xmlns:android="http://schemas.android.com/apk/res/android">
+<widget android-versionCode="560" id="org.phidatalab.radar_armt" ios-CFBundleIdentifier="org.phidatalab.radar-armt" ios-CFBundleVersion="1" version="2.0.2-alpha" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>RADAR Questionnaire</name>
     <description>An application that collects active data for research.</description>
     <author email="radar-base@kcl.ac.uk" href="http://radar-base.org/">RADAR-Base</author>
@@ -50,6 +50,7 @@
         <custom-config-file parent="./application" target="AndroidManifest.xml">
             <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/notification_icon" />
         </custom-config-file>
+        <custom-preference name="android-manifest/@android:requestLegacyExternalStorage" value="true" />
     </platform>
     <platform name="ios">
         <feature name="CDVWKWebViewEngine">
